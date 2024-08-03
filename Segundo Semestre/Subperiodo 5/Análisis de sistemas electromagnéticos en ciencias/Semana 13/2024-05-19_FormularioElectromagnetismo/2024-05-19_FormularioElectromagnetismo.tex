@@ -1,0 +1,62 @@
+\documentclass[12pt, letterpaper]{report}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage[figurename=Figura]{caption}
+\title{Formulario electromagnetismo}
+\author{Juan Pablo Guerrero Escudero}
+\date{19 mayo, 2024}
+\begin{document}
+\maketitle
+\begin{multicols*}{3}
+\begin{enumerate}
+    % Lorentz Force
+    \item $\vec{F_B} = q\vec{v} \times \vec{B}$.
+    \item $F_B = |q|v_\perp B = |q| v B_\perp = |q| v B \sin(\phi)$.
+    % Force on a Current-Carrying Conductor
+    \item $F_B = I \int_{P_i}^{P_f} d\vec{L} \times \vec{B}$.
+    \item $F_B = I\vec{L} \times \vec{B} = I l B_\perp = I l B \sin(\phi)$.
+    \item $\vec{L} = P_f - P_i$.
+    % Electric Force
+    \item $F_E = q\vec{E}$.
+    % Total Force on a Moving Charge
+    \item $\vec{F_T} = q(\vec{E} + \vec{v} \times \vec{B})$.
+    % Radius of Circular Motion
+    \item $R = \frac{mv}{|q|B}$.
+    % Frequency and Angular Frequency
+    \item $f = \frac{\omega}{2\pi} = \frac{qB}{2\pi m}$.
+    \item $\omega = \frac{|q|B}{m}$.
+    % Velocity
+    \item $v = \frac{E}{B} = \frac{d}{t}$.
+    % Electric Potential Difference
+    \item $DV = -\vec{E} \cdot d$.
+    % Torque and Magnetic Moment
+    \item $T_r = I\vec{A} \times \vec{B} = IA B \sin(\phi)$.
+    \item $\mu = I\vec{A} = nI\vec{A}$.
+    % Biot-Savart Law
+    \item $\vec{B} = \frac{\mu_0}{4\pi}\left(\frac{q \vec{v} \times \hat{r}}{r^2}\right)$.
+    \item $B = \frac{\mu_0}{4\pi}\left(\frac{|q|v \sin(\phi)}{r^2}\right)$.
+    % Magnetic Field of a Current Element
+    \item $d\vec{B} = \frac{\mu_0 I}{4\pi}\left(\frac{d\vec{l} \times \hat{r}}{r^2}\right)$.
+    \item $dB = \frac{\mu_0 I}{4\pi}\left(\frac{dl \sin(\phi)}{r^2}\right)$.
+    % Magnetic Field of a Straight Conductor
+    \item $\vec{B} = \frac{\mu_0 I}{4\pi a}(\cos{\theta_1} - \cos{\theta_2}) \hat{k}$.
+    \item $\vec{B} = \frac{\mu_0 I}{2\pi r}$.
+    \item $\vec{B} = \frac{\mu_0 I(\theta)}{4\pi r}$, $\theta \, \text{rad}$.
+    \item $\vec{B} = \frac{\mu_0 I a^2}{2(x^2 + a^2)^{\frac{3}{2}}}$, $a = r$, $x = \text{dist}$.
+    \item $B = \frac{\mu_0 I}{2r}$, $\theta = 2\pi$.
+    \item $\vec{B} = \frac{\mu_0 I}{2r}(\cos{\theta}) \hat{i}$, $\theta \, \text{rad}$.
+    % Magnetic Flux and Ampere's Law
+    \item $\phi_B = \int_S \vec{B} \cdot d\vec{A} = 0$, SS.
+    \item $C = \int_c \vec{B} \cdot d\vec{l} = \mu_0 I_{enc}$.
+    \item $C = \int_c \vec{B} \cdot d\vec{l} = \frac{\mu_0 Ir}{2\pi R^2}$, $r < R$.
+    \item $C = \int_c \vec{B} \cdot d\vec{l} = \mu_0 n I l$, $B = \mu_0 n I$.
+\end{enumerate}
+\end{multicols*}
+\end{document}

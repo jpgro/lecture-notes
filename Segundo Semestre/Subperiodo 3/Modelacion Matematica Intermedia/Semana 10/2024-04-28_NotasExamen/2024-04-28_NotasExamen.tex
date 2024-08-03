@@ -1,0 +1,149 @@
+\documentclass[12pt, letterpaper]{report}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage[figurename=Figura]{caption}
+\title{Notas para examen}
+\author{Juan Pablo Guerrero Escudero}
+\date{28 abr, 2024}
+\begin{document}
+\maketitle
+\subsection*{Derivadas parciales}
+Las derivadas parciales de una función en un punto $(x_0,y_0)$ representan las pendientes de las rectas 
+tangentes a las trazas en los planos $y = y_0$ y $x = x_0$. Geométricamente, representan 
+lo mismo que la derivada univariada, considerando que las otras variables independientes permanecen constantes. \\
+Para el cálculo de derivadas parciales, todas las reglas de derivación aplican, solo teniendo en cuenta que una de las variables
+fija o constante, y así se trata como una función de una sola variable. \\ 
+
+Las derivadas de primer y orden superior nos dan información sobre la función, sobre donde es creciente/decreciente, los puntos 
+críticos y su naturaleza, y dónde es cóncava (hacia arriba o hacia abajo). \\
+
+\textbf{Derivadas de orden superior}: Para una función de dos variables existen 4 derivadas de orden superior, 
+$D_{xx}f$, $D_{xy}f$, $D_{yx}f$ y $D_{yy}f$. A las derivadas parciales de segundo orden $D_{xy}f$ y $D_{yx}f$ se le llaman 
+mixtas o cruzadas. Ojo, para la notación de Jacobi, el orden de derivación se lee de derecha a izquierda, y en la 
+notación de Euler se lee de izquierda a derecha. \\ 
+
+Si la función es continua en su dominio, satisface el Teorema de Clairaut o de Schwarz, que dice que si las funciones 
+$D_{xy}f(x_0, y_0)$ y $D_{yx}f(x_0, y_0)$ son continuas en un disco $D$ que contiene al punto $(x_0, y_0)$, entonces 
+$D_{xy}f(x_0, y_0) = D_{yx}f(x_0, y_0)$. Es decir, el orden de derivación es indistinto. Éste teorema aplica no solo para derivadas 
+de segundo orden, sino para derivadas de orden superior también. 
+
+\subsection*{Planos tangentes}
+Un plano tangente es un plano que contiene a las rectas tangentes a las trazas verticales de una superficie. Hay dos ecuaciones para obtener los planos tangentes. 
+Si la superficie está definida por una función $z = f(x, y)$: 
+\begin{align}
+z-z_0 = D_xf(x_0, y_0)(x-x_0) + D_yf(x_0, y_0)(y-y_0)
+\end{align}
+En cambio si la superficie está definida por una ecuación $f(x, y, z) = c$: 
+\begin{align}
+0 = D_xf(x_0, y_0, z_0)(x-x_0) + D_yf(x_0, y_0, z_0)(y-y_0) + D_zf(x_0, y_0, z_0)
+\end{align}
+Para escribir las ecuaciones del plano tangente, a veces conviene reescribir a las funciones despejando para $z$ con el fin de convertirla en 
+una función, y usar la fórmula del plano tangente a una función para obtenerlo. \\ 
+
+\textbf{Aproximaciones lineales}: Una aproximación lineal o linearización a una función de dos variables en $(x_0, y_0)$ está definida por: 
+\begin{align}
+L(x, y) = f(x_0, y_0) + D_xf(x_0, y_0)(x-x_0) + D_yf(x_0, y_0)(y-y_0)
+\end{align}Se puede ver la linearización como lo mismo que la ecuación del plano tangente a la superficie 
+definida por $z = f(x, y)$ en $(x_0, y_0)$, donde $z_0 = f(x_0, y_0)$. \\ 
+
+\textbf{Diferenciales}: Si recordamos que la recta tangente sirve como aproximación lineal, entonces cuando hay un cambio en $x$ de tamaño 
+$\Delta  x$ existe el cambio que experimenta la función $y = f(x)$ denotado por $\Delta y$, y el que experimenta la 
+recta tangente denotado por $dy$. En dos variables, se definen los diferenciales $dx$ y $dy$ como las variables independientes, y el diferencial total $dz$ como: 
+\begin{align}
+dz = D_xf(x, y)dx + D_y(x, y)dy
+\end{align}
+
+\subsection*{Derivadas direccionales y vector gradiente}
+Las derivadas parciales nos dicen el cambio cuando solamente una variable está fija. Es decir, lo podemos pensar como solo movimiento en $x$ o 
+solamente movimiento en $y$. Las derivadas direccionales en cambio nos dicen el cambio que tiene la función en cierta dirección, dada por un vector 
+$\vec{u}$. Éstas nos permiten conocer el cambio máximo o mínimo de una función.\\
+
+La derivada direccional $D_uf$ representa la taza o razón de cambio de una función $f$ en cualquier dirección $\vec{u}$, donde $\vec{u} = <a, b>$ un vector unitario. La 
+forma operacional de la derivada direccional es la siguiente, teniendo un vector unitario como $\vec{u}$: 
+\begin{align}
+D_uf(x_0, y_0) = D_xf(x_0, y_0)a + D_yf(x_0, y_0)b
+\end{align}
+En cambio, si no se da el vector pero un ángulo $\theta$ de la dirección del vector, el vector unitario se vuelve $\vec{u} = <\cos(\theta), \sin(\theta)>$. 
+\textbf{Ojo}: Si se nos da un vector, y no es unitario, podemos hacerlo unitario calculando su norma o magnitud, y dividiendo $a$ y $b$ entre la norma, de tal manera 
+que el vector se convierta en unitario. \\ 
+El resultado de una derivada direccional se puede interpretar como que la función $f$ crece o decrece $x$ unidades por cada 
+unidad que nos desplazamos en dirección del vector $\vec{u}$, o bien, desplazándonos en dirección del vector unitario. \\ 
+
+Tips: Siempre busca simplificar el vector unitario, y usar el sistema correcto de unidades. De ser posible, traslada el 
+resultado a una forma exacta por medio del álgebra, en vez de meter todo en la calculadora. \\ 
+
+Otra forma de expresar la derivada direccional es como el producto punto entre el gradiente de f, $\nabla f = <D_xf(x_0, y_0), D_yf(x_0, y_0)>$ y $u = <a, b>$.: 
+\begin{align}
+D_uf(x_0, y_0) &= \nabla f(x_0, y_0) \cdot \vec{u}\\
+D_uf(x_0, y_0) &= ||\nabla f(x_0, y_0)|| \cdot ||\vec{u}|| \cos(\theta)\\
+\intertext{Y como el vector $\vec{u}$ es unitario:}
+D_uf(x_0, y_0) &= ||\nabla f (x_0, y_0) || \cdot \cos(\theta)
+\end{align}
+En el proceso anterior, donde $\theta$ es el ángulo entre los vectores $\nabla f$ y $\vec{u}$. Nota, no es lo mismo que la 
+dirección del vector unitario, no confundir. Simplificamos porque la magnitud de $\vec{u}$ es 1, y por lo tanto notamos que 
+los valores de la direccional en un punto dependen de $\theta$ ya que $\||\nabla f||$ es constante en $(x_0, y_0)$. Entonces, podemos deducir 3 cosas: 
+\begin{enumerate}
+\item $D_uf(x_0, y_0)$ se maximiza cuando $\cos(\theta) = 1$, o $\theta = 0$. 
+\item $D_uf(x_0, y_0)$ se minimiza cuando $\cos(\theta) = -1$, o $\theta = \pi$. 
+\item $D_uf(x_0, y_0)$ se anula cuando $\cos(\theta) = 0$, o $\theta = \frac{\pi}{2}$. 
+\end{enumerate}
+Por lo tanto, lo anterior quiere decir que si $\nabla f$ o vector gradiente es diferente a cero, la dirección de máximo crecimiento es la misma 
+que el vector gradiente evaluado en un punto, y el valor máximo de la direccional es $||\nabla f(x_0, y_0)||$. Además, la dirección de máximo decrecimiento es 
+la dirección opuesta al gradiente, y el valor mínimo de la direccional $-||\nabla f(x_0, y_0)||$. Por último, si $\nabla f(x_0, y_0) \neq 0$, en las direcciones ortogonales 
+o perpendiculares al vector gradiente no hay cambio. \\
+
+Para obtener la dirección del vector gradiente teniendo sus coordenadas, se hace $\theta = \tan^-1(\frac{y}{x})$, donde $x$ y $y$ son las componentes del vector 
+gradiente.\\
+
+Una última cosa es que si el vector gradiente es igual a cero, entonces la derivada direccional es igual a cero en cualquier dirección. \\ 
+
+En realidad el gradiente es un campo vectorial, ya que a cada punto en el plano o espacio asigna un vector que da la máxima razón de cambio en ese punto. 
+
+\subsection*{Regla de la cadena para funciones de varias variables}
+Ver presentación en Canva 
+\subsection*{Integrales dobles}
+En integrales dobles, se tiene la noción de que el integrando de éstas se forma haciendo "curva de arriba" menos curva de abajo, o curva a la derecha menos curva 
+a la izquierda, y la variable que se mueve sobre el intervalo tiene límites constantes. \\
+Una región D en el plano es de: 
+\begin{enumerate}
+\item Tipo 1: se ubica entre dos gráficas de dos funciones continuas de X. Esto es, D queda definida por 
+$(x, y :  a \leq x \leq b, g_1(x) \leq y \leq g_2(x))$. Es decir, $x$ se mueve entre constantes, y $y$ se ajusta a la variable 
+x por medio de alguna función. 
+\item Tipo 2: se ubica entre las gráficas de dos funciones continuas de Y, esto es, D queda definida por: 
+$(x, y : h_1(x) \leq x \leq h_2(y), c \leq y \leq d)$. Es decir, $y$ se mueve entre constantes, y $x$ se ajusta a la variable $y$ por medio 
+de alguna función \\ 
+
+Para verificar si es tipo 1 (Curva de arriba - curva de abajo) o tipo 2 (curva de derecha - curva de izquierda), se trazan "flechas"
+desde una a curva a otra, y buscamos que sean continuas las flechas, es decir, que se todas las flechas empiezen en la misma curva y terminen 
+en otra curva. 
+\end{enumerate}
+\textbf{Integrales dobles: } Si la región de integración $D$ es de Tipo 1, entonces la integral doble resutla: 
+\begin{align}
+{\int\int}_D f(x, y) dA = \int_{a}^{b} \int_{g_1(x)}^{g_2(x)} f(x, y) dydx
+\end{align}
+Y si la región de integración es tipo 2: 
+\begin{align}
+    \int \int_Df(x, y) dA = \int_{c}^{d} \int_{h_1(x)}^{h_2(x)} f(x, y) dxdy
+\end{align}
+En cualquier caso, el orden de integración nos debe dar el mismo valor del volumen, y de ahí viene el Teorema de Fubini, 
+que dice que si $f$ es una región continua en $D$, entonces: 
+\begin{align}
+    \int \int_Df(x, y) dA = \int_{a}^{b} \int_{g_1(x)}^{g_2(x)} f(x, y) dydx = \int_{c}^{d} \int_{h_1(x)}^{h_2(x)} f(x, y) dxdy
+\end{align}
+Y por lo tanto podemos decidir un orden de integración sobre otro para facilitar la evaluación. Ojo: en la integral más externa 
+nunca van variables, solo constantes, en ambos casos (Tipo I y Tipo II). 
+
+\subsection*{Área superficial}
+El área de una superficie $S$ definida por $z = f(x, y)$ en una región $D$ está dada por la integral doble
+\begin{align}
+A_s = \int \int_D \sqrt{(D_xf)^2 + (D_yf)^2 + 1} dA
+\end{align}. Ésta tiene gran similitud con la fórmula de longitud de arco en funciones univariadas: $L = \int_{a}^{b} \sqrt{1 + f'(x)^2} dx$. Aquí aplican 
+igualmente los conceptos para determinar la región de integración en el apartado de integrales dobles. Como las integrales 
+dobles resultan muchas veces muy complejas de resolver, se usa software como Wolfram o Matlab para resolverlas. 
+\end{document}

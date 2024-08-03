@@ -1,0 +1,88 @@
+\documentclass[12pt, letterpaper]{report}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage[figurename=Figura]{caption}
+\title{Apuntes Módulo Matemáticas: Análisis de sistemas eléctricos en ciencias}
+\author{Juan Pablo Guerrero Escudero}
+\date{24 abril, 2024}
+\begin{document}
+\maketitle
+\subsection*{Parametrización de curvas} 
+Para parametrizar una curva, hacemos que x y y sean funciones de una tercera variable t, la cuál se le llama \textbf{parámetro} de la forma 
+$x(t)$ y $y(t)$. Conforme $t$ varía, el resultado de las funciones cambian y se generan coordenadas $(x, y)$ que trazan una curva 
+paramétrica. La manera de parametrizar no es única y pueden existir varias parametrizaciones de la misma curva. Para graficar una curva paramétrica en Python se hace lo siguiente: 
+\begin{verbatim}
+import numpy as np 
+import matplotlib.pyplot as plt
+all_x = []
+all_y = []
+while (t <= 2*np.pi): 
+    x = t + np.sin(5*t)
+    y = t + np.sin(6*t)
+    t = t + 0.01
+    all_x.append(x)
+    all_y.append(y)
+plt.plot(all_x, all_y)
+plt.show()
+\end{verbatim}
+Después, si queremos encontrar la recta tangente a un punto sobre la curva, la pendiente o razón de cambio en un punto específico nos la 
+da la regla de la cadena para funciones paramétricas: 
+\begin{align}
+\frac{dy}{dx} = \frac{\frac{dy}{dt}}{\frac{dx}{dt}} 
+\end{align}si $\frac{dx}{dt} \neq 0$. La curva tiene una tangente horizontal cuando $\frac{dy}{dt} = 0$ y una tangente vertical cuando 
+$\frac{dx}{dt} = 0$. Ahora, para calcular la concavidad se obtiene la segunda derivada de la función paramétrica de la siguiente forma: 
+\begin{align}
+\frac{d^2y}{dx^2} = \frac{d}{dx}(\frac{dy}{dx}) = \frac{\frac{d}{dt}(\frac{dy}{dx})}{\frac{dx}{dt}}
+\end{align}La curva es cóncava hacia arriba cuanto la segunda derivada es positiva, y cóncava hacia abajo cuando ésta es negativa.    \\
+
+\textbf{Área}: Para calcular el área de una ecuación paramétrica desde $t = \alpha$ hasta $t = \beta$, se calcula utilizando la siguiente regla de sustitución: 
+\begin{align}
+A = \int_{\alpha}^{\beta}ydx = \int_{\alpha}^{\beta} g(t)f'(t)dt
+\end{align}
+\textbf{Longitud de curva o arco}: Si tenemos ecuaciones paramétricas $x = f(t)$ y $y=g(t)$, y $\frac{dx}{dt} > 0$ en el intervalo $\alpha \leq t \leq \beta$, significa que 
+la curva es recorrida una vez, de izquierda a derecha, cuanto $t$ incrementa de $\alpha$ a $\beta$. La fórmula de longitud de curva es: 
+\begin{align}
+L = \int_{\alpha}^{\beta} \sqrt{(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2} dt
+\end{align}Esto es porque en general, $L = \int ds$ y en éste caso $(ds)^2 = (dx)^2 + (dy)^2$. Igualmente, podemos extender ésta fórmula a 3 dimensiones:
+\begin{align}
+    L = \int_{\alpha}^{\beta} \sqrt{(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2 + (\frac{dz}{dt})^2} dt
+\end{align}En donde $z = f(t)$, y las derivadas de las 3 funciones paramétricas son continuas en $[\alpha, \beta]$. \\ 
+
+Ahora, si se quiere encontrar la longitud de una recta que parte de $\vec{r}_0$ y termina en $\vec{r}_1$, se utiliza la siguiente fórmula: 
+\begin{align}
+    \vec{r} = (1-t)\vec{r}_0 + t \vec{r}_1
+\end{align}Donde $0 \leq t \leq 1$. Es importante recordar que aquí se trabajan con vectores, por lo que para obtener las funciones $x(t)$ y $y(t)$ de la recta, 
+se multiplican las coordenadas de $\vec{r}_0$ y se crea un nuevo vector de 3 coordenadas donde cada coordenada es el producto del vector 
+y $(1-t)$, y lo mismo para $\vec{r}_1$. Al final, se suman ambos vectores resultantes, y se obtiene el vector $(x(t), y(t), h(t))$, dependiendo de las 
+dimensiones con las que estemos trabajando. 
+\subsection*{Campos escalares}
+Un campo escalar es una región $D \subset \mathbb{R}^n$, en la que a cada punto $x \in D$ se le asigna un escalar $f(x)$, asociando a cada valor 
+con un punto en el espacio. Algunos usos comunes son la distribución de la temperatura o la presión del gas en el espacio. \\ 
+
+\textbf{Integrales de línea: } Si tenemos la curva suave $C$ definida por las curvas paramétricas $x(t)$ y $y(t)$, y $a \leq t \leq b$, entonces la 
+integral de línea de la función $f$ a lo largo de C se define como 
+\begin{align}
+\int_c f(x, y)ds
+\end{align}Ésta fórmula viene de particionar el intervalo $[a, b]$ en subintervalos dependientes del tiempo, evaluar la función en los extremos de esos intervalos, 
+y crear subarcos de longitud $\delta S_i$, los cuáles se suman para obtener la longitud o valor de la integral de línea. Así, se toma el límite cuando $n \rightarrow \infty$ y 
+se reemplaza con la notación de integral. 
+Por lo tanto, para el cálculo de la integral de línea de f a lo largo de C se hace: 
+\begin{align}
+\int_c f(x, y)ds &= \int_c f(x,y) \sqrt{(\frac{dx}{dt})^2+(\frac{dy}{dt})^2 + (\frac{dz}{dt})^2}dt\\
+\int_c f(x, y)ds &= \int_{a}^{b}f(x(t), y(t)) \sqrt{(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2}dt
+\end{align}Donde $ds$ es la longitud de curva se multiplica por la función de dos variables. El valor de la integral de línea no depende de la parametrización de la curva, 
+siempre que ésta se recorra exactamente una vez cuando $t$ se incrementa de $a$ a $b$. \\ 
+
+Ahora, si C es una curva suave por tramos, es decir, es una unión de una cantidad finita de curvas $C_1 + C_2 + ... C_n$, donde el punto inicial de $C_{i+1}$ es el punto final de $C_i$. Entonces, 
+la integral de línea a lo largo de $f$ es las suma de las integrales de f a lo largo de cada curva C: 
+\begin{align}
+\int_C f(x, y)ds &= \int_{C_1}f(x, y)ds + \int C_2 f(x, y)ds + ... + \int_{C_n} f(x, y)ds
+\end{align}
+
+\end{document}

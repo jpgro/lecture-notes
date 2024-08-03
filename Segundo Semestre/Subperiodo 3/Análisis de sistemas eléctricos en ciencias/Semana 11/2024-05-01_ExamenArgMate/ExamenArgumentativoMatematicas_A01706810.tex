@@ -1,0 +1,103 @@
+\documentclass[12pt, letterpaper]{report}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage[figurename=Figura]{caption}
+\title{Examen Argumentativo Escrito Matemáticas y Computación: Análisis de sistemas eléctricos en ciencias}
+\author{Juan Pablo Guerrero Escudero, A01706810}
+\date{01 mayo, 2024}
+\begin{document}
+\maketitle
+\textbf{Apegándome al Código de Ética de los Estudiantes del Tecnológico de Monterrey, me
+comprometo a que mi actuación en este examen esté regida por la honestidad
+académica.}
+\subsection*{Matemáticas}
+\begin{enumerate}
+\item Argumenta detalladamente en base a un cálculo porque el siguiente es un campo vectorial
+conservativo: $\vec{F} = (3x^2 + y, e^y + x)$. \\
+
+\textbf{Solución}: Un campo vectorial es una función que asigna a cada punto $(x, y)$ un vector $\vec{F}(x, y)$ en el plano, y un campo vectorial 
+se denomina conservativo si el valor de la integral de línea es independiente de la trayectoria, lo que significa que 
+integrar sobre dos trayectorias diferentes nos da el mismo resultado, siempre que empiecen y terminen el mismo punto. La manera de verificar 
+si el campo vectorial es conservativo, es si existe una función $f$ que sea el gradiente del campo vectorial, es decir $\vec{F} = \nabla f$. Esto
+quiere decir que el gradiente de $f$ se puede expresar como $\nabla f = D_xf\hat{i} + D_yf\hat{j}$, que es la función vectorial 
+que contiene las derivadar parciales de $f$. Además, por el Teorema de Clairaut, debe suceder que el orden de derivación 
+de las derivadas parciales de segundo orden sea indistinto, es decir, $D_{xy}f = D_{yx}f$. Por lo tanto, si hay un campo vectorial 
+de la forma $F = P\hat{i} + Q\hat{j}$, éste es conservativo si $D_yP = D_xQ$. \\ 
+
+Por lo tanto, en la función dada, $P = 3x^2 + y$ y $Q = e^y+ x$. Obtenemos la derivada parcial con respecto a $y$ de $P$, y con respecto a 
+$x$ de $Q$. y resulta $D_yP = 1$, y $D_xQ = 1$, y por lo tanto $D_yP = D_xQ$, y eso significa que el campo vectorial sí es conservativo, es decir, 
+el valor de sus integrales de línea es independiente de la trayectoria tomada. 
+\item Posteriormente encuentra la función $f$ tal que $\vec{F} = \nabla f$. \\ 
+
+\textbf{Solución}: Para hacer esto, sabemos que $\vec{F} = \nabla f = 3x^2\hat{i} + e^y + x\hat{j}$, y como el vector gradiente 
+contiene las derivadas parciales, $D_xf = 3x^2$, y $D_yf = e^y + x$. Para obtener la función original, podemos integrar una derivada 
+parcial respecto a $x$ o $y$ dependiendo el caso, y utilizar la derivada parcial restante para obtener el valor de la constante 
+resultante de la integral. \\
+Primero, integramos $D_xf$ con respecto a $x$ para obtener $f(x, y)$:\\
+\begin{align}
+f(x, y) &= \int D_xf dx\\ 
+f(x, y) &= \int (3x^2 + y) dx\\ 
+f(x, y) &= \int x^3 + xy + C(y)
+\end{align}
+Para obtener la constante de integración $C(y)$ podemos derivar $f(x, y)$: 
+\begin{align}
+D_yf = x + C_y(y)
+\intertext{Comparando con la derivada parcial definida al inicio, $D_yf = e^y + x$, tiene forzosamente que ser que $C_y(y) = e^y$}
+\end{align}
+Así, como obtuvimos $C_y(y)$, decir, la derivada de la constante de integración respecto a $y$, podemos integrar nuevamente 
+con respecto a $y$ para obtener $C(y)$ y completar la función. Como $C_y(y) = e^y$, la integral con respecto a $y$ resulta la misma, es decir, 
+$C(y) = e^y$. Y por lo tanto la función original de donde viene el gradiente o campo vectorial, resulta $f(x, y) = x^3 + xy + e^y$. \\ 
+
+Para comprobar, si calculamos las derivadas parciales con respecto a $x$ y $y$ de $f(x, y)$, coincide con el vector gradiente o el campo vectorial: 
+$D_xf = 3x^2 + y$, $D_yf = x + e^y$, y por lo tanto el procedimiento es correcto. 
+\item Finalmente, encuentra $\int_{(10, 1)}^{(15, 2)}\vec{F} \cdot d \vec{r}$. \\
+
+\textbf{Solución}: Para integrar lo anterior, podemos recordar que $W = \int_{a}^{b} \vec{F} \cdot d \vec{r} = f(b) - f(a)$, ya que por una parte 
+el campo es conservativo, y eso significa que no importa la trayectoria, por lo que de acuerdo con el Teorema Fundamental 
+del cálculo, la integral es lo mismo que la diferencia de la función original evaluada en $a$ y en $b$, y en éste caso $a = (10, 1)$, $b = (15, 2)$, y si hacemos lo anterior, 
+$f((15, 2)) - f((10, 1)) = 3.4123x10^3 - 1.0127x10^3 = 2399.6$. Por lo tanto $W = 2399.6$. 
+\end{enumerate}
+\subsection*{Computación}
+Instrucción: Para encontrar la raíz de una función no lineal podemos usar métodos numéricos como el
+de Bisección o el de Newton-Raphson.\\ 
+\begin{enumerate}
+\item Escriba ambos algoritmos (pasos, no código): \\ 
+El algoritmo deL método de Bisección trabaja con funciones continuas en un intervalo $[a, b]$. Primero, verifica si el producto de $f(a)\cdot f(b) < 0$. Si se cumple, 
+se calcula un punto medio $m$ en el intervalo $[a, b]$, y se evalúa $f(m)$. Si ese valor es igual a cero, significa que encontramos la raíz buscada. En caso contrario, 
+primero verificamos si $f(m)$ tiene un signo opuesto a $f(a)$ o $f(b)$, y en base a eso se redefine el intervalo $[a, b]$ como $[a, m]$ o $[m, b]$, dependiendo de en qué intervalo 
+haya un cambio de signo. Así sucesivamente, se va acotando más el intervalo hasta que se alcance la precisión deseada, usualmente 
+es un valor de tolerancia. \\ 
+
+En segundo lugar, el algoritmo de Newton-Raphson hace lo siguiente: Ocupa una función, y un punto aproximado donde se encuentra
+encontrar su raíz, es decir $x_0$. Después el siguiente valor de $x$ se calcula $x_{n+1} = x_n + \frac{f(x_n)}{f'(x_n)}$, que geométricamente significa 
+la recta tangente que intersecta al eje $x$, y así sucesivamente se van calculando los valores de $x_{n+1}$ hasta que se pase un valor de tolerancia, usualmente 
+calculado el valor de la función con respecto al eje $x$. 
+\item ¿Describa cuáles son las ventajas y desventajas de cada método y qué factores influyen
+en la elección del método más adecuado en cada caso?\\ 
+Las ventajas del método de Bisección es que es mucho más seguro para garantizar la convergencia a la raíz en una función. Además, es facil de entender, y funciona bien 
+para funciones continuas o derivables en todo el intervalo. La principal desventaja es que converge de manera lineal, por lo que 
+ocupa más iteraciones para alcanzar una solución precisa. Además, éste método no puede usarse para encontrar raíces de funciones 
+no lineales. \\ 
+Por otro lado, el método de Newton-Raphson converge más rápido a la raíz que el método de bisección, además de que requiere 
+menos iteraciones que el método de Bisección para encontrar la raíz. Y además, puede usarse en funciones no lineales. Sin embargo, su principal desventaja es que 
+depende en gran medida de la aproximación inicial, ya que si es lejana de la solución, el método puede divergir. Además, 
+requiere el cálculo de las derivadas de la función, que puede suceder que no todas las funciones tengan derivadas explícitas o que se pueden 
+expresar analíticamente. \\ 
+
+Los factores que influyen en la decisión de elección del método adecuado, es primero si la función es lineal o no lineal, si la función tiene derivadas calculables analíticamente, y si 
+se prefiere simplicidad sobre eficiencia. En el caso de que se necesite una convergencia rápida, y se tiene una función continua y derivable, es mejor usar el método de 
+Newton Raphson porque requiere menor poder computacional. Por otro lado, si la función no es derivable, y se prefiere un método más 
+simple, es mejor usar el método de Bisección. 
+
+\item Cuando NO se pueden aplicar los métodos? Ambos métodos no se pueden aplicar si se tienen funciones discontinuas, ya que ambos 
+asumen que la función es continua en un intervalo. Además, el Método de Newton-Raphson funciona con funciones derivables, entonces si no se puede 
+derivar la función, no se puede usar éste método. Por último, si la función tiene múltiples raíces, ambos métodos pueden converger 
+a la solución incorrecta. 
+\end{enumerate}
+\end{document}

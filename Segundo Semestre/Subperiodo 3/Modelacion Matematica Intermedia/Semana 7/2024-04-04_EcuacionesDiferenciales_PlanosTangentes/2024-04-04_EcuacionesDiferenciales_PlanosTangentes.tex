@@ -1,0 +1,96 @@
+\documentclass[12pt, letterpaper]{report}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage[figurename=Figura]{caption}
+\title{Ecuaciones Diferenciales y Planos Tangentes}
+\author{Juan Pablo Guerrero Escudero}
+\date{04 abril, 2024}
+\begin{document}
+\maketitle
+\subsection*{Ecuaciones Diferenciales}
+Las ecuaciones diferenciales son ecuaciones que contienen derivadas dentro de ellas. Es decir, son funciones 
+que relacionan una función con sus derivadas. Éstas nos ayudan, entre otras cosas, a describir cómo cambian las 
+cosas con el tiempo. Se pueden clasificar de dos tipos: 
+\begin{enumerate}
+\item Ecuaciones diferenciales ordinarias: Son aquellas que contienen derivadas no parciales. 
+\item Ecuaciones diferenciales no ordinarias: Son aquellas que contienen derivadas parciales. 
+\end{enumerate}
+En clase, se realizó el ejercicio de verificar si una función satisface o no la Ecuación Diferencial Parcial (EDP) de 
+Laplace en la forma ($D_{xx}U + D_{yy}U = 0$). Si satisface lo anterior, se dice que $U$ es armónica. A continuación se 
+muestra el procedimiento de algunos ejercicios: \\ 
+\begin{enumerate}
+\item $u(x_y) = x^3 + 3xy^2$: 
+\begin{align*}
+    D_{xx}u =& 6x \\
+    D_{yy}u =& 6x \\
+    6x + 6x \neq& 0
+\end{align*} Y por lo tanto no cumple con la EDP de Laplace. 
+\item $u(x, y) = Ln(\sqrt{x^2 + y^2})$: 
+\begin{align*}
+D_{xx}u =& \frac{y^2 - x^2}{(x^2 + y^2)^2}\\
+D_{yy}u =& \frac{x^2 + y^2}{(x^2 + y^2)^2} \\
+\frac{y^2 - x^2}{(x^2 + y^2)^2} - \frac{x^2 + y^2}{(x^2 + y^2)^2} =& \frac{0}{(x^2 + y^2)^2}
+\end{align*} Y por lo tanto sí cumple con la EDP de Laplace. 
+\item $u(x, y) = e^{-x}cos(y) -e^{-y}cos(x)$
+\begin{align*}
+D_{xx}u =& e^{-y}cos(x) + e^{-x}cos(y)\\
+D_{yy}u =& -e^{-y}cos(x) - e^{-x}cos(y)
+D_{xx}u + D_{yy}u =& 0
+\end{align*} Por lo tanto, sí se cumple la ecuación diferencial de Laplace. 
+\end{enumerate}
+Observación: Hay muchas ecuaciónes diferenciales en el mundo de las matemáticas, y la mayoría de ellas son muy difíciles de 
+resolver analíticamente, por lo que muchas veces se resuelven por métodos numéricos o de aproximación. 
+\subsection*{Planos Tangentes}
+Los planos tangentes son las aproximaciones lineales a las superficies. También, se puede ver como el 
+plano que contiene a las rectas tangentes a las trazas verticales de una superficie. Entonces, 
+Se le puede dar a $D_{x}f(x_0, y_0)$ la interpretación de pendiente de la recta tangente a la traza en $y = y_0$, y 
+análogamente, $D_yf(x_0, y_0)$ la pendiente de la recta tangente a la traza en $x = x_0$. \\ 
+
+Si $z_0 = f(x_0, y_0)$, entonces las rectas tangentes son: 
+\begin{align}
+RT_x = z &= f(x_0, y_0) + D_xf(x_0, y_0)[x-x_0] \\
+RT_y = z &= f(x_0, y_0) + D_yf(x_0, y_0)[y-y_0]
+\end{align} Entonces, la ecuación del plano tangente es: 
+\begin{align}  
+z = f(x_0, y_0) + D_xf(x_0, y_0)[x-x_0] + D_yf{x_0, y_0}[y-y_0]
+\end{align} En donde z siempre contiene a ambas rectas tangentes, se puede ver como el punto inicial $f(x_0, y_0)$ más 
+la Razón de cambio de $x$, ($D_xf(x_0, y_0)[x-x_0]$) más la razón de cambio en $y$ ($D_yf(x_0, y_0)[y-y_0]$). \\
+
+La ecuación del plano tangente también se puede ver como una aproximación lineal, que dice que si te acercas lo suficiente, los valores 
+de la recta tangente se parecen a los de la superficie. Y por lo tanto, la ecuación de la aprox. lineal de una función es: 
+\begin{align}
+L(x, y) = f(x_0, y_0) + D_xf(x_0, y_0)[x-x_0] + D_yf(x_0, y_0)[y-y_0]
+\end{align} A continuación, se muestra el ejemplo del cálculo de la ecuación del plano tangente: \\
+\textbf{Ejemplo 1}: Determina el plano tangente a $x^2 + y^2 + z - 9 = 0$ en el punto $(1, 2, 4)$1.\\ 
+\begin{enumerate}
+\item En primer lugar, se puede reescribir la ecuación en términos de $z$ como $z = 9 - x^2 + y^2$. Ésto con el fin de hacerla en la forma de la ecuación del 
+plano tangente $z = f(x, y)$. 
+\item En segundo lugar, se determinan las derivadas parciales $D_xZ$ y $D_yZ$.
+\begin{align*}
+D_xZ =& -2x\\
+D_yZ =& -2y
+\end{align*}
+\item Después, se escribe la aproximación lineal de la función, o el plano tangente (es lo mismo). 
+\begin{align*}
+L(1, 2) =& f(1, 2) - 2(1)[x - 1] -2(2)[y - 2]\\
+L(1, 2) =& 4 -2x + 2 -4y + 8\\
+L(1, 2) =& -2x -4y + 14\\ 
+z =& -2x -4y + 14
+\end{align*} La cuál es la ecuación del plano tangente a la ecuación. 
+\end{enumerate}
+
+\textbf{Ejercicio de práctica}: La ecuación del plano tangente a una superficie es: 
+$P_{tangente} = D_xf(x_0, y_0, z_0)(x-x_0) + D_yf(x_0, y_0, z_0)(y-y_0) + D_zf(x_0, y_0, z_0)(z-z_0) = 0$. \\ 
+
+\begin{enumerate}
+    \item $z = f(x, y, z) = \frac{x^2}{a^2} - \frac{y^2}{b^2} + h$. 
+    En éste caso se usa la fórmula de plano tangente a una función $f(x, y)$: 
+     
+\end{enumerate}
+\end{document}

@@ -1,0 +1,40 @@
+\documentclass[12pt, letterpaper]{report}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage[figurename=Figura]{caption}
+\title{Derivadas de orden superior}
+\author{Juan Pablo Guerrero Escudero}
+\date{01 abril, 2024}
+\begin{document}
+\maketitle
+\textbf{Derivadas en $\mathbb{R}^2$}: Las derivadas en $\mathbb{R}^2$ se llaman igualmente derivadas totales, 
+y son de la forma $y' = \frac{dy}{dx}$, $y'' = \frac{d^2y}{dx^2}$, y $y''' = \frac{d^3x}{dx^3}$. Al derivar, "transformas" 
+una función en otra función. \\ 
+
+\textbf{Derivadas en $\mathbb{R}^3$}: Para una función de dos variables independientes de la forma $z = f(x, y)$, se puede obtener 
+la derivada parcial respecto a cada variable. Usando la notación de Euler: $D_xf$ y $D_yf$, las cuáles son de primer orden. \\
+
+\textbf{Derivadas de orden superior}: Sin embargo, si se busca obtener las derivadas parciales de segundo orden, hay cuatro posibles: $D_{xx}f$, 
+$D_{xy}f$, $D_{yx}f$, $D_{yy}f$, debido a que se puede derivar parcialmente cada derivada de primer orden nuevamente respecto a la variable $x$ o 
+$y$. Es decir, se toma la derivada parcial de primer orden, y se vuelve a derivar respecto a cualquiera de las variables, y es por eso que se escribe $D_{xy}f$, 
+ya que la derivada parcial de $f$ respecto a $x$ se deriva nuevamente respecto a $y$. \\
+Se le llaman \textbf{derivadas parciales mixtas} cuando se deriva parcialmente una función respecto a dos o más variables en un órden específico.\\
+
+En general, para calcular el número de derivadas, se hace mediante $m^n$, donde $m$ es el número de variables, y $n$ es el orden de la derivada parcial. 
+
+\subsection*{Teorema de Clairaut/Schwarz}
+Si f es una función $f: \mathbb{R}^2 \rightarrow \mathbb{R}$, que está definida en un disco $D$ con el punto $(x_0, y_0)$ dentro del disco, y $D_{xy}f$ y $D_{yx}f$ son 
+continuas en $D$, entonces $D_{xy}f(x_0, y_0) = D_{yx}f(x_0, y_0)$. Entonces, lo que nos dice lo anterior es que las derivadas parciales mixtas 
+van a ser iguales si estamos en el dominio de esas funciones, es decir "El orden de derivación es indistinto". El teorema funciona para derivadas de orden superior, es decir: 
+$D_{xyx}f = D_{xxy}f = D_{yxx}f$. \\ 
+
+En Matlab, para hacer $D_xf$ se hace con el comando \texttt{diff(f, x)}. Igualmente, $D_{xxx}f$ se hace con el comando 
+\texttt{diff(f, x, 3)}. Por último, para evaluar $D_{xxx}f(0, 1)$ se hace \texttt{u\_xxx(0, 1)} para obtener el valor exacto, y 
+\texttt{double(u\_xxx(0, 1))} para obtener el valor aproximado
+\end{document}

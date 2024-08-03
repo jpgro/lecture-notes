@@ -1,0 +1,65 @@
+\documentclass[12pt, letterpaper]{report}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage[figurename=Figura]{caption}
+\title{Apuntes Módulo Matemáticas: Análisis de sistemas eléctricos en ciencias}
+\author{Juan Pablo Guerrero Escudeor}
+\date{30 abril, 2024}
+\begin{document}
+\maketitle
+\subsection*{Campos vectoriales}
+Un campo vectorial $\vec{F}$ es una función que asigna a cada punto $(x, y)$ o $(x, y, z)$ en el espacio un vector $\vec{F}(x, y)$ o 
+$\vec{F}(x, y, z)$. El campo vectorial lo podemos expresar en funciones escalares, una por cada componente $i, j, k$: 
+$\vec{F}(x, y, z) = P(x, y)i + Q(x, y)j + R(x, y)k = \vec{F} = Pi + Qj + Rk$. Un campo vectorial se denomina 
+conservativo si es el gradiente de alguna función escalar, es decir existe $f$ tal que $F = \nabla f$. Aquí, $f$ 
+es la función potencial de $F$. 
+\subsection*{Integrales de línea}
+En éstas integrales, en vez de integral en un intervalo $(a, b)$ se integra sobre una curva $C$ dada por ecuaciones paramétricas $x(t)$ y $y(t)$ o 
+por la ecuación vectorial $r(t) = x(t)i + y(t)j$. Por lo tanto, se escribe $\int_C f(x, y)ds$ a la integral 
+de línea de $f$ a lo largo de $C$. \\
+
+La longitud de la curva $C$ es $\int_{a}^{b} \sqrt{(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2}$. Por lo tanto, la fórmula 
+para evaluar una integral de línea es $\int_{a}^{b}f(x(t), y(t))\sqrt{(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2}$. Si la función es positiva, 
+entonces la integral de línea representa el área de un lado de la figura en la cual la base es C y la altura es $f(x, y)$. Si $C$ es una 
+curva suave por tramos, la integral de $f$ a lo largo de $C$ es la suma de las integrales de cada $C_n$ individual. \\ 
+
+Cualquier interpretación física de la integral de línea depende de la interpretación de la función original. Ejemplo, si $p(x, y)$ representa 
+la densidad lineal de un punto $(x, y)$ de un alambre delgado, la masa es la integral de línea de $p(x, y)$ a lo largo de la curva $c$. Entonces, el 
+centro de masa se puede encontrar en $(x, y)$ donde $x = \frac{1}{m}\int_Cx(p(x, y))ds$, y $y = \frac{1}{m}\int_Cy(p(x, y))ds$. \\
+
+La integral de línea original se llama "integral de línea respecto a la longitud de arco", e igual se puede 
+hacer una integral de línea respecto a x o a y. $\int_C f(x, y)dx = \int_{a}^{b}f(x(t), y(t))x'(t)dt$, y respecto a $y$: 
+$\int_Cf(x, y)dy = \int_{a}^{b} f(x(t), y(t))y'(t)dt$. \\ 
+
+Para parametrizar un segmento rectilíneo, que inicia en $r_0$ y termina en $r_1$ se hace $r(t) = (1-t)r_0 + tr_1$ donde $0 \leq t \leq 1$. Tip: el valor de 
+la integral de línea depende tanto los puntos extremos como de la trayectoria, a menos que el campo sea conservativo, así como 
+de la dirección de la curva. Entonces, si integramos respeto a x o a y, la integral si depende 
+de la dirección, pero si integramos respecto a la longitud de arco, el valor de la integral de línea no cambia 
+cuando se invierte la dirección. \\
+
+En 3 dimensiones o en el espacio, la integral de línea a lo larco de $C$ = $\int_cf(x, y, z)ds = \int_{a}^{b}f(x(t), y(t), z(t))\sqrt{(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2 + (\frac{dz}{dt})^2}dt$. E igualmente, 
+las integrales respecto a $x$ o a $y$ se escriben, por ejemplo para $\int_Cf(x, y, z)dz = \int_{a}^{b}f(x(t), y(t), z(t))z'(t)dt$, y igual para los casos de $dx$ y $dz$. En el espacio, 
+evaluamos las integrales de línea de la forma $\int_c P(x, y, z)dx + Q(x, y, z)dy + R(x, y, z)dz$ expresando 
+todo en términos del parámetro $t$.
+\subsubsection*{Integrales de línea en campos vectoriales}
+En un campo vectorial, el trabajo $W = \int_C \vec{F}(x, y, z) \cdot \vec{T}(x, y, z)ds = \int_C F\cdot T ds$, donde $T(x, y, z)$ es 
+el vector unitario tangente en el punto $(x, y, z)$ sobre C. Es decir, el trabajo es la 
+integral de línea respecto a la longitud de arco de la componente tangencial de la fuerza. Si la curva $C$ es una curva vectorial, 
+podemos expresar el trabajo como $W = \int_{a}^{b} \vec{F}(\vec{r}(t)) \cdot \vec{r}(t)'dt$, que se puede abreviar como $\int_c \vec{F} \cdot d \vec{r}$. \\ 
+
+Ahora, el trabajo resultante puede ser negativo, lo que puede significar que el campo obstruye el movimiento de la curva. Igual, se sigue cumpliendo que 
+$\int_{-c} \vec{F} \cdot d\vec{r} = - \int_c \vec{F} \cdot d\vec{r}$, debido a que el vector tangente $T$ es 
+reemplazado por su negativo cuando $C$ es reemplazado por $-C$. \\ 
+
+La relación entre la integral de línea en un campo escalar, y la integral de línea en un campo vectorial es la siguiente: 
+$\int_c \vec{F} \cdot d\vec{r} = \int_c Pdx + Qdy + Rdz$, donde $F$ es el campo vectorial $F = Pi + Qj + Rk$. Por ejemplo, 
+la integral de línea $\int_c ydx + zdy + xdz$ se puede expresar como $\int_c \vec{F} \cdot d\vec{r}$, donde $F(x, y, z) = yi + zj + xk$. 
+
+
+\end{document}
